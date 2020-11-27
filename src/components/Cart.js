@@ -35,7 +35,7 @@ class Cart extends Component {
   delet(event) {
     const { name } = event.target;
     const cartItemsStorage = JSON.parse(localStorage.getItem('cartItems'));
-    const cart = cartItemsStorage.filter((cartItem)=> cartItem.id !== name);
+    const cart = cartItemsStorage.filter((cartItem) => cartItem.id !== name);
     localStorage.setItem('cartItems', JSON.stringify(cart));
     this.atualizar();
   }

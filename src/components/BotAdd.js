@@ -9,7 +9,6 @@ class BotAdd extends React.Component {
         data-testid="product-detail-add-to-cart"
         type="button"
         onClick={ onClick }
-        data-testid="product-detail-add-to-cart"
         value="Adicionar ao Carrinho"
       />
     );
