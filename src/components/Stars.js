@@ -14,7 +14,9 @@ class Stars extends React.Component {
   }
 
   componentDidMount() {
-    this.estrelaCadente('1');
+    const { astronomo } = this.props;
+    astronomo('0');
+    this.brilhaEstrlinha('0');
   }
 
   brilhaEstrlinha(not) {
@@ -30,10 +32,11 @@ class Stars extends React.Component {
     this.setState({ constelação: ceu });
   }
 
-  estrelaCadente(not) {
+  estrelaCadente(event) {
+    const { name } = event.target;
     const { astronomo } = this.props;
-    astronomo(not);
-    this.brilhaEstrlinha(not);
+    astronomo(name);
+    this.brilhaEstrlinha(name);
   }
 
   render() {
@@ -41,13 +44,20 @@ class Stars extends React.Component {
     return (
       <div>
         {constelação.map((estrela) => (
-          <input
+          <button
+            className="ESbutton"
             type="button"
+            name={ estrela.index }
             key={ estrela.index }
-            src={ estrela.img }
-            alt={ `nota ${estrela.index}` }
-            onClick={ () => this.estrelaCadente(estrela.index) }
-          />
+            onClick={ this.estrelaCadente }
+          >
+            <img
+              className="imagem"
+              name={ estrela.index }
+              src={ estrela.img }
+              alt={ `nota ${estrela.index}` }
+            />
+          </button>
         ))}
       </div>
     );

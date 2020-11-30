@@ -25,18 +25,37 @@ class Card extends React.Component {
     const { produto } = this.props;
     const { thumbnail, title, price, id, category_id: categoryId } = produto;
     return (
-      <div data-testid="product">
-        <h3>{title}</h3>
-        <img src={ thumbnail } alt={ title } />
-        <h4>{`R$: ${price}`}</h4>
-        <div>
-          <input
-            type="button"
-            onClick={ this.addToCart }
-            data-testid="product-add-to-cart"
-            value="Adicionar ao Carrinho"
-          />
+      <div className="produto" data-testid="product">
+        <div className="proI">
           <Link
+            className="prolin"
+            to={ `product-details/${id}/${categoryId}` }
+          >
+            <h4>{title}</h4>
+          </Link>
+          <Link
+            to={ `product-details/${id}/${categoryId}` }
+          >
+            <img className="proimg" src={ thumbnail } alt={ title } />
+          </Link>
+          <Link
+            className="prolin"
+            to={ `product-details/${id}/${categoryId}` }
+          >
+            <h2>{`R$: ${price}`}</h2>
+          </Link>
+          <div className="proinput">
+            <input
+              type="button"
+              onClick={ this.addToCart }
+              data-testid="product-add-to-cart"
+              value="Adicionar ao Carrinho"
+            />
+          </div>
+        </div>
+        <div className="prolink">
+          <Link
+            className="prolin"
             data-testid="product-detail-link"
             to={ `product-details/${id}/${categoryId}` }
           >
